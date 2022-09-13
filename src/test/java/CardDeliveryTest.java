@@ -1,23 +1,19 @@
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
-
-
 import java.time.Duration;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 class CardDeliveryTest {
     @Test
     void testValidForm() {
-        //Configuration.holdBrowserOpen=true;
+        Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "31.12.2222";
 
-        Selenide.open("http://localhost:9999/");
+        open("http://localhost:9999/");
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").setValue(data);
@@ -31,12 +27,12 @@ class CardDeliveryTest {
 
     @Test
     void testInValidData() {
-        //Configuration.holdBrowserOpen=true;
+        Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "13.09.2022";
 
-        Selenide.open("http://localhost:9999/");
+        open("http://localhost:9999/");
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").setValue(data);
