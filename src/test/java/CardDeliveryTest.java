@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.$x;
 class CardDeliveryTest {
     @Test
     void testValidForm() {
-        Configuration.holdBrowserOpen=true;
+        //Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "31.12.2222";
@@ -32,7 +32,7 @@ class CardDeliveryTest {
 
     @Test
     void testInValidData() {
-        Configuration.holdBrowserOpen=true;
+        //Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "13.09.2022";
