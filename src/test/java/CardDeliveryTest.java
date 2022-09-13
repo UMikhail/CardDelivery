@@ -6,14 +6,18 @@ import java.time.Duration;
 import static com.codeborne.selenide.Selenide.*;
 
 class CardDeliveryTest {
+    @BeforeEach
+    void setupTest() {
+        Configuration.holdBrowserOpen=true;
+        open("http://localhost:9999/");
+    }
+
     @Test
     void testValidForm() {
-        Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "31.12.2222";
 
-        open("http://localhost:9999/");
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").setValue(data);
@@ -27,12 +31,10 @@ class CardDeliveryTest {
 
     @Test
     void testInValidData() {
-        Configuration.holdBrowserOpen=true;
 
         //задаю дату заполнения через переменную
         String data = "13.09.2022";
 
-        open("http://localhost:9999/");
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").setValue(data);
