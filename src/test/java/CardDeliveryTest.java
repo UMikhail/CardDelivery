@@ -5,15 +5,15 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 import static com.codeborne.selenide.Selenide.*;
 
-class CardDeliveryTest {
+public class CardDeliveryTest {
     @BeforeEach
-    void setupTest() {
+    public void setupTest() {
         Configuration.holdBrowserOpen=true;
         open("http://localhost:9999/");
     }
 
     @Test
-    void testValidForm() {
+    public void testValidForm() {
 
         //задаю дату заполнения через переменную
         String data = "31.12.2222";
@@ -30,7 +30,7 @@ class CardDeliveryTest {
     }
 
     @Test
-    void testInValidData() {
+    public void testInValidData() {
 
         //задаю дату заполнения через переменную
         String data = "13.09.2022";
