@@ -25,7 +25,7 @@ public class CardDeliveryTest {
         $("[name=\"phone\"]").setValue("+79876543210");
         $x("//span[@class=\"checkbox__box\"]").click();
         $x("//span[@class=\"button__content\"]").click();
-        String text = $("[data-test-id=\"notification\"]").should(Condition.visible, Duration.ofSeconds(15)).getText();
+        String text = $("[data-test-id=\"notification\"]").should(Condition.visible, Duration.ofSeconds()).getText();
         Assertions.assertEquals("Успешно!\nВстреча успешно забронирована на " + data, text.trim());
     }
 
