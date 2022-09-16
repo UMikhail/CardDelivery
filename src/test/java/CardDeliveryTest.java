@@ -15,29 +15,31 @@ public class CardDeliveryTest {
     @Test
     public void testValidForm() {
 
-        //задаю дату заполнения через переменную
-        String data = "31.12.2222";
+        //задаю дату заявки через переменную planningDate + 3 дня, для проверки валидности даты
+        DataService service = new DataService();
+        String planningDate = service.generateDate(3);
 
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
-        $("[placeholder=\"Дата встречи\"]").setValue(data);
+        $("[placeholder=\"Дата встречи\"]").setValue(planningDate);
         $("[name=\"name\"]").setValue("Иван Петров-Сидоров");
         $("[name=\"phone\"]").setValue("+79876543210");
         $x("//span[@class=\"checkbox__box\"]").click();
         $x("//span[@class=\"button__content\"]").click();
         String text = $("[data-test-id=\"notification\"]").should(Condition.visible, Duration.ofSeconds(30)).getText();
-        Assertions.assertEquals("Успешно!\nВстреча успешно забронирована на " + data, text.trim());
+        Assertions.assertEquals("Успешно!\nВстреча успешно забронирована на " + planningDate, text.trim());
     }
 
     @Test
     public void testInValidData() {
 
-        //задаю дату заполнения через переменную
-        String data = "13.09.2022";
+        //задаю дату заявки через переменную planningDate + 1 день, для проверки невалидности даты
+        DataService service = new DataService();
+        String planningDate = service.generateDate(1);
 
         $("[placeholder=\"Город\"]").setValue("Йошкар-Ола");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(Keys.DELETE);
-        $("[placeholder=\"Дата встречи\"]").setValue(data);
+        $("[placeholder=\"Дата встречи\"]").setValue(planningDate);
         $("[name=\"name\"]").setValue("Иван Петров-Сидоров");
         $("[name=\"phone\"]").setValue("+79876543210");
         $x("//span[@class=\"checkbox__box\"]").click();
